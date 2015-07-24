@@ -1,14 +1,13 @@
 ﻿namespace CSharpPowerTools.Client
 {
     using System;
-    using CSharpPowerTools.Extensions;
+    using CSharpPowerTools.Common;
 
     public class Test
     {
-
         private static void Main()
         {
-            MyApplication.OnUnhandledException(ex =>
+            ApplicationInfra.OnUnhandledException(ex =>
             {
                 Console.WriteLine(ex);
                 Console.WriteLine("Exiting Application...");
