@@ -10,25 +10,25 @@
     //    and make activator work with that.
     public abstract class Singleton<T> where T : new()
     {
-        protected static T Instance;
+        private static T _instance;
 
         private static object mutex = new object();
 
         public static T GetInstance()
         {
             // Double lock checking mechanism
-            if (Instance == null)
+            if (_instance == null)
             {
                 lock (mutex)
                 {
-                    if (Instance == null)
+                    if (_instance == null)
                     {
-                        Instance = Activator.CreateInstance<T>();
+                        _instance = new T(); // Activator.CreateInstance<T>();
                     }
                 }
             }
 
-            return Instance;
+            return _instance;
         }
     }
 }
